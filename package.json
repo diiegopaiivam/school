@@ -11,5 +11,9 @@
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3.11.0"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/diiegopaiivam/school.git",
+  "author": "Diego Paiva <diiegopaiivam@gmail.com>",
+  "license": "MIT"
 }
