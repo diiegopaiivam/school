@@ -1,30 +1,94 @@
-<h2>Log in- Administrador</h2>
 
-<% flash.each do |key, value| %>
-  <div class="flash <%= key %>"> <%= value %></div>
-<% end %>
+<!DOCTYPE html>
+<html lang="en">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<head>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <title>School</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/templates/startbootstrap-sb-admin-2//vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/templates/startbootstrap-sb-admin-2//vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/templates/startbootstrap-sb-admin-2//dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/templates/startbootstrap-sb-admin-2//vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Login Administrador</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h3 class="text-center">Login Administrador</h3>
+                        <% flash.each do |key, value| %>
+                          <div class="flash <%= key %>"> <%= value %></div>
+                        <% end %>
+
+                        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                          <div class="field">
+                            <%= f.label :email %><br />
+                            <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control" %>
+                          </div>
+
+                          <div class="field">
+                            <%= f.label :password %><br />
+                            <%= f.password_field :password, autocomplete: "current-password", :class => "form-control" %>
+                          </div>
+
+                          <% if devise_mapping.rememberable? %>
+                            <div class="field">
+                              <%= f.check_box :remember_me %>
+                              <%= f.label :remember_me %>
+                            </div>
+                          <% end %>
+
+                          <div class="actions">
+                            <%= f.submit "Log in", :class => "btn btn-lg btn-success btn-block" %>
+                          </div>
+                        <% end %>
+
+                        <%= render "admins/shared/links" %>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+    <!-- jQuery -->
+    <script src="/templates/startbootstrap-sb-admin-2//vendor/jquery/jquery.min.js"></script>
 
-<%= render "admins/shared/links" %>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/templates/startbootstrap-sb-admin-2//vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/templates/startbootstrap-sb-admin-2//vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/templates/startbootstrap-sb-admin-2//dist/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>
