@@ -23,3 +23,7 @@
       subject:
         id: Código
         description: Descrição
+      question:
+        id: Código
+        description: Descrição
+        

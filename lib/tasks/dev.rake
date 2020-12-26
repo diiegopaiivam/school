@@ -60,8 +60,8 @@ namespace :dev do
 
     desc "Create Questions and Answer"
     task add_questions_answer: :environment do
-      Subject.all.each do |subject|
-        rand(10..15).times do |i|
+      Subject.all.each do |subject| 
+        rand(10..15).times do |i| #Cria pelo menos de 10 a 15 Questões por assunto
           Question.create!(
             description: "#{Faker::Lorem.paragraph}. #{Faker::Lorem.question}",
             subject: subject
