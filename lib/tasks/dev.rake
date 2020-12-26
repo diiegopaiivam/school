@@ -49,11 +49,11 @@ namespace :dev do
 
     desc "Create Subject for Questions"
     task add_subjects: :environment do
-      file_name = 'subjects.txt'
-      file_path = File.join(DEFAULT_FILE_PATHS, file_name)
+      file_name = 'subjects.txt' 
+      file_path = File.join(DEFAULT_FILE_PATHS, file_name) #define caminho até arquivo txt
       
-      File.open(file_path, 'r').each do |row|
-        Subject.create!(description: row.strip)
+      File.open(file_path, 'r').each do |row| #percorre cada linha do arquivo para salvar no banco
+        Subject.create!(description: row.strip) #método strip retira qualquer espaço ou simbolo eventualmente criado
       end
     end
 
