@@ -13,6 +13,7 @@ namespace :dev do
       show_spinner("Create More Administrator...") { %x(rails dev:add_more_admin) }
       show_spinner("Create User Master...") { %x(rails dev:add_default_profile) }
       show_spinner("Create Subject for Questions...") { %x(rails dev:add_subjects ) }
+      show_spinner("Create Questions and Answer...") { %x(rails dev:add_questions_answer) }
     else 
       puts "Você não está em ambiente de desenvolvimento"
     end
@@ -54,6 +55,18 @@ namespace :dev do
       
       File.open(file_path, 'r').each do |row| #percorre cada linha do arquivo para salvar no banco
         Subject.create!(description: row.strip) #método strip retira qualquer espaço ou simbolo eventualmente criado
+      end
+    end
+
+    desc "Create Questions and Answer"
+    task add_questions_answer: :environment do
+      Subject.all.each do |subject|
+        rand(10..15).times do |i|
+          Question.create!(
+            description: "#{Faker::Lorem.paragraph}. #{Faker::Lorem.question}",
+            subject: subject
+          )
+        end
       end
     end
 
