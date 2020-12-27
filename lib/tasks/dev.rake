@@ -62,10 +62,13 @@ namespace :dev do
     task add_questions_answer: :environment do
       Subject.all.each do |subject| 
         rand(10..15).times do |i| #Cria pelo menos de 10 a 15 Questões por assunto
-          Question.create!(
-            description: "#{Faker::Lorem.paragraph}. #{Faker::Lorem.question}",
-            subject: subject
-          )
+          params = create_questions_params(subject)
+          answers_array = params[:question][:answers_attributes]
+
+          add_answers(answers_array) #adiciona resposta as questões
+          elect_true_answer(answers_array) #seta uma resposta como true
+          
+          Question.create!(params[:question])
         end
       end
     end
@@ -77,4 +80,30 @@ namespace :dev do
         yield
         spinner.success("(#{msg_end})")
       end
+
+      def create_questions_params(subject = Subject.all.sample) #Caso o usuário não passe o assunto, ele sorteia algum já criado
+        {
+          question: {
+            description: "#{Faker::Lorem.paragraph}. #{Faker::Lorem.question}",
+            subject: subject,
+            answers_attributes: []
+          }
+        }
+      end 
+
+      def create_answer_params(correct = false)
+        { description: Faker::Lorem.sentence, correct: correct }
+      end
+
+      def add_answers(answers_array = [])
+        5.times do |c|
+          answers_array.push(create_answer_params)
+        end 
+      end 
+
+      def elect_true_answer(answers_array = [])
+        answers_array[rand(6)] = create_answer_params(true)
+      end 
+
+
 end
