@@ -4,4 +4,18 @@ class Question < ApplicationRecord
   accepts_nested_attributes_for :answers, reject_if: :all_blank, allow_destroy: true
   # Setando quantidade de itens por página
   paginates_per 10
+
+  # Pesquisa as Questões utilizando como parâmetro o termo digitado e a página
+  scope :search_question, -> (page, term){
+    includes(:answers)
+      .where("lower(description) LIKE ?", "%#{term}%")
+      .page(page)
+  }
+
+  # Lista as últimas questões, utilizando como parâmetro a página
+  scope :last_questions, -> (page){
+    includes(:answers)
+      .order('created_at desc')
+      .page(page)
+  }
 end
