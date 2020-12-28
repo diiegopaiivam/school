@@ -1,0 +1,21 @@
+var element = document.getElementById("submit_<%= @answer.question_id%>");
+
+element.classList.remove("btn-default");
+
+if (<%= @answer.correct %>) {
+    element.classList.add("btn-disabled");
+    $.bootstrapGrowl('Parabéns, você acertou!', {
+        type: 'success', // (null, 'info', 'danger', 'success')
+        align: 'center', // ('left', 'right', or 'center')
+        allow_dismiss: true, // If true then will display a cross to close the popup.
+        stackup_spacing: 10 // spacing between consecutively stacked growls.
+    });
+ } else {
+    element.classList.add("btn-disabled");
+    $.bootstrapGrowl('Você errou! :(', {
+        type: 'danger', // (null, 'info', 'danger', 'success')
+        align: 'center', // ('left', 'right', or 'center')
+        allow_dismiss: true, // If true then will display a cross to close the popup.
+        stackup_spacing: 10 // spacing between consecutively stacked growls.
+ });
+}
