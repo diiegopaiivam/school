@@ -1,6 +1,6 @@
 <% if profile_signed_in? %>
     <% @questions.each do |question| %>
-        <%= form_with url: "/site/answer" do |form| %>
+        <%= form_with url: "/site/answer", local: false do |form| %>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
