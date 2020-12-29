@@ -12,10 +12,19 @@ class Question < ApplicationRecord
       .page(page)
   }
 
+  # Listar Perguntas por assuntos utilizando como parâmetros id do assunto e a página
+  scope :search_subject, -> (page, subject_id){
+    includes(:answers, :subject)
+      .where(subject_id: subject_id)
+      .page(page)
+  }
+
   # Lista as últimas questões, utilizando como parâmetro a página
   scope :last_questions, -> (page){
     includes(:answers)
       .order('created_at desc')
       .page(page)
   }
+
+
 end

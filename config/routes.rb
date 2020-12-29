@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     get 'welcome/index'
     get 'search', to: 'search#questions'
     post 'answer', to: 'answer#questions'
+    get 'search_subject/:subject_id', to: 'search#subject', as:'search_subject'
   end
   namespace :profiles__backoffice do
     get 'welcome/index'
