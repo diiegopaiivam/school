@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   namespace :profiles__backoffice do
     get 'welcome/index'
+    get 'profile', to: 'perfil#edit'
   end
   namespace :admins_backoffice do
     get 'welcome/index' ##Dashbooard
