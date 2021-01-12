@@ -10,38 +10,34 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <br>
-                <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+            <%= form_with(url: profiles__backoffice_profile_path, model: @profile , local: true, class:"form-horizontal form-label-left",  novalidate:"") do |form| %>
+                <div class="item form-group">
+                    <%= form.label :first_name, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                    <div class="col-md-6 col-sm-6 ">
+                        <%= form.text_field :first_name, value: @profile, class:"form-control", required:"required" %>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <%= form.label :last_name, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                    <div class="col-md-6 col-sm-6 ">
+                        <%= form.text_field :last_name, class:"form-control", required:"required" %>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <%= form.label :email, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                    <div class="col-md-6 col-sm-6 ">
+                        <%= form.text_field :email, class:"form-control", required:"required", readonly: true %>
+                    </div>
+                </div>
+                             
+                <div class="ln_solid"></div>
+                <div class="item form-group">
+                    <div class="col-md-6 col-sm-6 offset-md-3">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </div>
 
-                    <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nome<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="first-name" required="required" class="form-control ">
-                        </div>
-                    </div>
-                    <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Sobrenome <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="last-name" name="last-name" required="required" class="form-control">
-                        </div>
-                    </div>
-                    <div class="item form-group">
-                        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Email</label>
-                        <div class="col-md-6 col-sm-6 ">
-                            <input id="middle-name" class="form-control" type="text" name="middle-name">
-                        </div>
-                    </div>
-                    
-                    <div class="ln_solid"></div>
-                    <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 offset-md-3">
-                            <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                    </div>
-
-                </form>
+            <% end %>
             </div>
         </div>
     </div>
