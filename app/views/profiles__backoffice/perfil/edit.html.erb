@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 ">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Dados Cadastrais</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+            <%= form_with(url: profiles__backoffice_profile_path, model: @profile , local: true, class:"form-horizontal form-label-left",  novalidate:"") do |form| %>
+                <div class="item form-group">
+                    <%= form.label :first_name, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                    <div class="col-md-6 col-sm-6 ">
+                        <%= form.text_field :first_name, value: @profile, class:"form-control", required:"required" %>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <%= form.label :last_name, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                    <div class="col-md-6 col-sm-6 ">
+                        <%= form.text_field :last_name, class:"form-control", required:"required" %>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <%= form.label :email, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                    <div class="col-md-6 col-sm-6 ">
+                        <%= form.text_field :email, class:"form-control", required:"required", readonly: true %>
+                    </div>
+                </div>
+                             
+                <div class="ln_solid"></div>
+                <div class="item form-group">
+                    <div class="col-md-6 col-sm-6 offset-md-3">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </div>
+
+            <% end %>
+            </div>
+        </div>
+    </div>
+</div>

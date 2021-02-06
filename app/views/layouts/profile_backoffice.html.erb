@@ -218,6 +218,19 @@
     <!-- jQuery custom content scroller -->
     <script src="/templates/gentelella/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 
+    <script src="/js/jquery.bootstrap-growl.min.js"></script>
+
+    <% if notice %>
+        <%= javascript_tag do %>
+            $.bootstrapGrowl("<%= notice %>", {
+                type: 'success', // (null, 'info', 'danger', 'success')
+                align: 'right', // ('left', 'right', or 'center')
+                allow_dismiss: true, // If true then will display a cross to close the popup.
+                stackup_spacing: 10 // spacing between consecutively stacked growls.
+            });     
+        <% end %>
+    <% end %>
+
     <!-- Custom Theme Scripts -->
     <script src="/templates/gentelella/build/js/custom.min.js"></script>
   </body>
