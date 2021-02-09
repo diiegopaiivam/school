@@ -16,9 +16,15 @@ Rails.application.routes.draw do
     resources :subjects
     resources :questions
   end
-  devise_for :profiles
-  devise_for :admins
+  devise_for :profiles do
+    get '/profiles/sign_out' => 'devise/sessions#destroy'
+  end
+  devise_for :admins do
+    get '/admins/sign_out' => 'devise/sessions#destroy'
+  end
   get 'site/welcome/index'
+
+  get 'admin', to: 'admins_backoffice/welcome#index'
   
   root to: 'site/welcome#index'
 end
