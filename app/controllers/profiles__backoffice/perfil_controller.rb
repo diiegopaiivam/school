@@ -1,7 +1,9 @@
 class ProfilesBackoffice::PerfilController < ProfilesBackofficeController
     before_action :verify_password, only: [:update]
     before_action :set_profile
+
     def edit
+        @profile.build_profile_user if @profile.profile_user.blank?
     end
 
     def update
@@ -19,7 +21,8 @@ class ProfilesBackoffice::PerfilController < ProfilesBackofficeController
         end
 
         def profile_params
-            params.require(:profile).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+            params.require(:profile).permit(:first_name, :last_name, :email, :password, :password_confirmation, 
+            profile_user_attributes: [:id, :address, :gender, :birthdate])
         end
 
         ## Extraindo password e password confirmation, caso o usuário queira mudar apenas o email
