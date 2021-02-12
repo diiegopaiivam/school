@@ -22,7 +22,7 @@ class ProfilesBackoffice::PerfilController < ProfilesBackofficeController
 
         def profile_params
             params.require(:profile).permit(:first_name, :last_name, :email, :password, :password_confirmation, 
-            profile_user_attributes: [:id, :address, :gender, :birthdate])
+            profile_user_attributes: [:id, :address, :gender, :birthdate, :avatar])
         end
 
         ## Extraindo password e password confirmation, caso o usuário queira mudar apenas o email
