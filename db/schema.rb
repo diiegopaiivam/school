@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_170649) do
+ActiveRecord::Schema.define(version: 2021_02_15_171249) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 2021_02_12_170649) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
+  create_table "profile_statistics", force: :cascade do |t|
+    t.integer "profile_id", null: false
+    t.integer "right_question", default: 0
+    t.integer "wrong_question", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["profile_id"], name: "index_profile_statistics_on_profile_id"
+  end
+
   create_table "profile_users", force: :cascade do |t|
     t.string "address"
     t.string "gender"
@@ -102,6 +111,7 @@ ActiveRecord::Schema.define(version: 2021_02_12_170649) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
+  add_foreign_key "profile_statistics", "profiles"
   add_foreign_key "profile_users", "profiles"
   add_foreign_key "questions", "subjects"
 end
