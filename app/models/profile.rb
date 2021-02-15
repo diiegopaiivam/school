@@ -8,6 +8,8 @@ class Profile < ApplicationRecord
   # Aceitar atributos vindos de outra tabela
   accepts_nested_attributes_for :profile_user, reject_if: :all_blank
 
+  after_create :set_statistic
+
   # Validações
   validates :first_name, presence: true, length: { minimum: 3 }, on: :update       
   validates :last_name, presence: true, length: { minimum: 3 }, on: :update
@@ -15,5 +17,10 @@ class Profile < ApplicationRecord
   def full_name
     [self.first_name, self.last_name].join(' ')
   end
+
+  private 
+    def set_statistic
+      AdminStatistic.set_event(AdminStatistic::EVENTS[:total_users])
+    end
   
 end

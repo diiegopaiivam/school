@@ -13,6 +13,9 @@ class Question < ApplicationRecord
       .page(page)
   }
 
+  #Callbacks
+  after_create :set_statistic
+
   # Listar Perguntas por assuntos utilizando como parâmetros id do assunto e a página
   scope :search_subject, -> (page, subject_id){
     includes(:answers, :subject)
@@ -27,5 +30,10 @@ class Question < ApplicationRecord
       .page(page)
   }
 
+
+  private
+    def set_statistic
+      AdminStatistic.set_event(AdminStatistic::EVENTS[:total_questions])
+    end
 
 end
